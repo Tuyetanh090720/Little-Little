@@ -1,0 +1,88 @@
+@extends('layouts.clients')
+@section('home')
+<div class="container">
+    <div class="logo-item row">
+        <div class="col-lg-4 col-md-4">
+            <img src="{{asset('assets/clients/img/image21942-n56s-200h.png')}}" alt="">
+        </div>
+        <div class="col-lg-8 col-md-8">
+            <span>Đầm Sen Park</span>
+        </div>
+    </div>
+    <div class="content-item">
+        <div class="row">
+            <div class="infomation background-block col-lg-8 col-md-8">
+                <div class="information-detail border-block">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.Sapiente officia earum consequatur nemo ullam id ea illo voluptatum voluptas.</p>
+                    <p>Nisi totam enim soluta minus voluptas, magni, alias adipisci sit harum consequatur ut necessitatibus nostrum facilis ex quam nulla aliquid distinctio nihil!</p>
+                    <p>
+                        <span>
+                            <i class="fa fa-star first-icon"></i>
+                            <i class="fa fa-star second-icon"></i>
+                        </span>
+                        <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="fa fa-star first-icon"></i>
+                            <i class="fa fa-star second-icon"></i>
+                        </span>
+                        <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="fa fa-star first-icon"></i>
+                            <i class="fa fa-star second-icon"></i>
+                        </span>
+                        <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="fa fa-star first-icon"></i>
+                            <i class="fa fa-star second-icon"></i>
+                        </span>
+                        <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                    </p>
+                </div>
+            </div>
+            <div class="reservation background-block col-lg-4 col-md-4">
+                <div class="reservation-content border-block">
+                    <div class="callout badge badge-curve">
+                        <div class="badge-inner on-sale">
+                            <span class="title-ticket">Vé của bạn</span>
+                        </div>
+                    </div>
+                    <div class="reserve-form">
+                        <form>
+                            <div class="package-dropdown">
+                                <select name="package" id="package-option" class="package-option">
+                                  <option value="Gói gia đình">Gói gia đình</option>
+                                  <option value="Gói nhóm bạn">Gói nhóm bạn</option>
+                                  <option value="Gói cô đơn">Gói cô đơn</option>
+                                </select>
+                            </div>
+                            <input type="text" class="quantity" name="quantity" placeholder="Số lượng vé" />
+                            <input type="datetime" class="date" name="date" placeholder="Ngày sử dụng" />
+                            <a><i class="fa fa-calendar"></i></a>
+                            <input type="text" class="fullname" name="fullname" placeholder="Họ và tên" />
+                            <input type="text" class="phone" name="phone" placeholder="Số điện thoại" />
+                            <input type="email" class="email" name="email" placeholder="Địa chỉ mail" />
+                            <button type="submit" class="reserve"><a href="/payment">Đặt vé</a></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="decord-item">
+        <img src="{{asset('assets/clients/img/image18451converted0211942-tri5-200w.png')}}" alt="" class="image-1">
+        <img src="{{asset('assets/clients/img/image18451converted0311942-qfyi-300h.png')}}" alt="" class="image-2">
+        <img src="{{asset('assets/clients/img/image18451converted0321942-wfx-300h.png')}}" alt="" class="image-3">
+        <img src="{{asset('assets/clients/img/image18451converted0411942-nrl-200w.png')}}" alt="" class="image-4">
+        <img src="{{asset('assets/clients/img/image18451converted0511942-0b39-200w.png')}}" alt="" class="image-5">
+        <img src="{{asset('assets/clients/img/image18451converted0611944-d6dt-300h.png')}}" alt="" class="image-6">
+        <img src="{{asset('assets/clients/img/lisaarnoldlaydof231944-a1wz-500w.png')}}" alt="" class="image-7">
+        <img src="{{asset('assets/clients/img/renderfixhair11942-8g6p-500h.png')}}" alt="" class="image-8">
+    </div>
+</div>
+@endsection

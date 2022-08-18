@@ -13,6 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('')->name('clients.')->group(function() {
+    Route::get('/', function () {
+        return view('/clients/home');
+    });
+    Route::get('/event', function () {
+        return view('/clients/event');
+    });
+    Route::get('/eventDetail', function () {
+        return view('/clients/eventDetail');
+    });
+    Route::get('/contactus', function () {
+        return view('/clients/contactus');
+    });
+    Route::get('/payment', function () {
+        return view('/clients/payment');
+    });
+    Route::get('/paymentSuccess', function () {
+        return view('/clients/paymentSuccess');
+    });
 });

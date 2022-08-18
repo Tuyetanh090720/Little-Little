@@ -1120,13 +1120,17 @@ textarea {
 .content-item .reservation .reserve-form i {
     background: #FFDE32;
     font-size: 25px;
-    width: 17%;
+    width: 15%;
     font-weight: 700;
     height: 50px;
     padding: 10px 10px;
     text-align: center;
     border-radius: 15px;
     box-shadow: 2px 4px 1px 2px #ffa90b;
+}
+
+.content-item .reservation .reserve-form a:focus .calendar {
+    display: block;
 }
 
 .content-item .reservation .reserve-form .reserve {
@@ -1385,13 +1389,18 @@ textarea {
     color: #23221F;
 }
 
+.contact .contact-form input {
+    margin-bottom: 15px;
+    margin-left: 40px;
+}
+
 .contact .contact-form .name-contact {
     width: 30%;
     margin-right: 15px;
 }
 
 .contact .contact-form .email-contact {
-    width: 67%;
+    width: 52%;
 }
 
 .contact .contact-form .phone-contact {
@@ -1400,7 +1409,7 @@ textarea {
 }
 
 .contact .contact-form .address-contact {
-    width: 67%;
+    width: 52%;
 }
 
 .contact .contact-form .send {
@@ -1408,7 +1417,7 @@ textarea {
     box-shadow: 2px 4px 1px 2px #d23333;
     border-radius: 16px;
     width: 50%;
-    height: 60px;
+    height: 50px;
     outline: none;
     border: none;
     font-size: 28px;
@@ -1431,7 +1440,7 @@ textarea {
     position: absolute;
     top: 380px;
     width: 15%;
-    left: -1%;
+    left: -2%;
     z-index: 11;
 }
 
@@ -1464,7 +1473,7 @@ label {
 }
 
 .payment-information .expiry-date {
-    width: 80%;
+    width: 75%;
 }
 
 .payment-information a {
@@ -1584,4 +1593,84 @@ label {
     font-family: 'Coiny', cursive;
     color: #fff;
     margin-left: 10px;
+}
+
+
+/* calendar */
+
+.calendar {
+    width: 500px;
+    margin: auto;
+    font-weight: bold;
+    background-color: #fff;
+    border-radius: 20px;
+    display: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+}
+
+.month {
+    padding: 10px 25px;
+    width: 100%;
+}
+
+.month ul li {
+    color: #23221F;
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.month .prev {
+    float: left;
+    padding-top: 10px;
+}
+
+.month .next {
+    float: right;
+    padding-top: 10px;
+}
+
+.weekdays {
+    margin: auto;
+    padding: 10px 0;
+    color: #FF8A00;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 13%;
+    text-align: center;
+}
+
+.days {
+    margin: auto;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13%;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #23221F;
+}
+
+.days li .active {
+    padding: 5px;
+    background: #FF8A00;
+    color: white !important;
+    border-radius: 50%;
 }

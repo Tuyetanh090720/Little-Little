@@ -125,10 +125,10 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="deal-arrow deal-left-arrow">
+                        <button class="arrow left-arrow" id="left-arrow">
                           <i class="fa fa-chevron-left"></i>
                         </button>
-                        <button class="deal-arrow deal-right-arrow">
+                        <button class="arrow right-arrow" id="right-arrow">
                           <i class="fa fa-chevron-right"></i>
                         </button>
                     </div>
@@ -143,4 +143,6 @@
 
     </div>
 </div>
+<script src="{{asset('assets/clients/js/slide.js')}}"></script>
+
 @endsection

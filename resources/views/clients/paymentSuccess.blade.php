@@ -76,11 +76,27 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
+                                        <div class="block">
+                                            <div class="event-img qr-img image-resize view view-third ">
+                                                <a href=" ">
+                                                    <img src="{{asset('assets/clients/img/image31906-z5e3-200w.png')}}" alt="" class="event-1">
+                                                </a>
+                                            </div>
+                                            <div class="ticket-information">
+                                                <h3 class="ticket-name ">ALT20210501</h3>
+                                                <span class="ticket-type ">Vé cổng</span><br/>
+                                                <span>---</span><br/>
+                                                <span class="ticket-date ">Ngày sử dụng: 31/05/2021</span><br/>
+                                                <i class="fa fa-check-circle"></i>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button class="deal-arrow deal-left-arrow">
+                                <button class="arrow left-arrow" id="left-arrow">
                                 <i class="fa fa-chevron-left"></i>
                                 </button>
-                                <button class="deal-arrow deal-right-arrow">
+                                <button class="arrow right-arrow" id="right-arrow">
                                 <i class="fa fa-chevron-right"></i>
                                 </button>
                             </div>
@@ -98,4 +114,5 @@
         <img src="{{asset('assets/clients/img/alvinarnoldvotay112351-zko9-600w.png')}}" alt="" class="payment-image">
     </div>
 </div>
+<script src="{{asset('assets/clients/js/slide.js')}}"></script>
 @endsection

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="{{asset('assets/clients/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/clients/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/clients/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/clients/css/iCiel Koni Black.otf')}}">
 </head>
 <body>
     {{-- navigation --}}
@@ -22,6 +21,7 @@
         @yield('payment')
         @yield('paymentSuccess')
     </div>
+
 </body>
 </html>
 

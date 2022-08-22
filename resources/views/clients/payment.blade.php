@@ -64,7 +64,7 @@
                             <div class="form-group">
                                 <label for="expiry-date">Ngày hết hạn</label><br/>
                                 <input type="text" class="expiry-date" name="expiry-date" Value="05/2025" />
-                                <a><i class="fa fa-calendar"></i></a>
+                                <a id="btn-calendar"><i class="fa fa-calendar"></i></a>
                             </div>
                             <div class="form-group">
                                 <label for="CVC">CVV/CVC</label><br/>
@@ -80,5 +80,8 @@
     <div class="decord-item">
         <img src="{{asset('assets/clients/img/Trini_Arnold_Votay1 2.png')}}" alt="" class="payment-image">
     </div>
+    @include('clients.calendar')
 </div>
+<script src="{{asset('assets/clients/js/calendar.js')}}"></script>
+
 @endsection

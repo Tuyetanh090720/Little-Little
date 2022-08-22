@@ -63,7 +63,8 @@
                             </div>
                             <input type="text" class="quantity" name="quantity" placeholder="Số lượng vé" />
                             <input type="datetime" class="date" name="date" placeholder="Ngày sử dụng" />
-                            <a><i class="fa fa-calendar"></i></a>
+                            <a id="btn-calendar"><i class="fa fa-calendar"></i></a>
+
                             <input type="text" class="fullname" name="fullname" placeholder="Họ và tên" />
                             <input type="text" class="phone" name="phone" placeholder="Số điện thoại" />
                             <input type="email" class="email" name="email" placeholder="Địa chỉ mail" />
@@ -84,5 +85,8 @@
         <img src="{{asset('assets/clients/img/lisaarnoldlaydof231944-a1wz-500w.png')}}" alt="" class="image-7">
         <img src="{{asset('assets/clients/img/renderfixhair11942-8g6p-500h.png')}}" alt="" class="image-8">
     </div>
+    @include('clients.calendar')
 </div>
+<script src="{{asset('assets/clients/js/calendar.js')}}"></script>
+
 @endsection

@@ -1,7 +1,28 @@
+// hiển thị lịch
+const btn_calendar = document.getElementById('btn-calendar')
+const calendar = document.getElementById('calendar')
+
+var click = 0
+
+btn_calendar.addEventListener("click", () => {
+    calendar.style.display = "block"
+})
+
+window.addEventListener("click", () => {
+    click += 1
+    console.log(click)
+    if (click % 2 == 0) {
+        calendar.style.display = "none"
+        click = 0
+    }
+})
+
+/////////////////////Hiển thị ngày tháng năm của lịch
 // Hiển thị tên tháng năm
 const monthEle = document.querySelector('.month');
 const yearEle = document.querySelector('.year');
 
+var currentDate = new Date().getDate();
 var currentMonth = new Date().getMonth();
 var currentYear = new Date().getFullYear();
 
@@ -91,24 +112,10 @@ function renderDate(y, m) {
     }
 
     for (var i = 0; i < daysInMonth; i++) {
-        dateEle.innerHTML += `<li id="day${i}">${i + 1}</li>`;
+        if (i == (currentDate - 1)) {
+            dateEle.innerHTML += `<li class="day active">${i + 1}</li>`;
+            continue
+        }
+        dateEle.innerHTML += `<li class="day" id="day${i+1}">${i + 1}</li>`;
     }
 }
-
-
-// hiển thị lịch
-const btn_calendar = document.getElementById('btn-calendar')
-const calendar = document.getElementById('calendar')
-
-let click = 0
-
-btn_calendar.addEventListener("click", () => {
-    click += 1
-    if (click % 2 == 1) {
-        calendar.style.display = "block"
-    }
-    if (click % 2 == 0) {
-        calendar.style.display = "none"
-        click = 0
-    }
-})

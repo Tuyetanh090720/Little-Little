@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\clients\HomeController;
+use App\Http\Controllers\clients\PaymentController;
+use App\Http\Controllers\clients\ContactController;
+use App\Http\Controllers\clients\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,22 +18,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('')->name('clients.')->group(function() {
-    Route::get('/', function () {
-        return view('/clients/home');
-    });
-    Route::get('/event', function () {
-        return view('/clients/event');
-    });
-    Route::get('/eventDetail', function () {
-        return view('/clients/eventDetail');
-    });
-    Route::get('/contactus', function () {
-        return view('/clients/contactus');
-    });
-    Route::get('/payment', function () {
-        return view('/clients/payment');
-    });
-    Route::get('/paymentSuccess', function () {
-        return view('/clients/paymentSuccess');
-    });
+    Route::get('', [HomeController::class, 'index'])->name('index');
+
+    Route::get('/event', [EventController::class, 'showEvent'])->name('showEvent');
+
+    Route::get('/eventDetail', [EventController::class, 'showEventDetail'])->name('showEventDetail');
+
+    Route::get('/contactus', [ContactController::class, 'index'])->name('index');
+
+    Route::post('/payment', [PaymentController::class, 'showPayment'])->name('showPayment');
+
+    Route::get('/paymentSuccess', [PaymentController::class, 'showPaymentSuccess'])->name('showPaymentSuccess');
 });

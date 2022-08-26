@@ -53,7 +53,8 @@
                         </div>
                     </div>
                     <div class="reserve-form">
-                        <form>
+                        <form name="reservation" action="/payment" method="POST">
+                            @csrf
                             <div class="package-dropdown">
                                 <select name="package" id="package-option" class="package-option">
                                   <option value="Gói gia đình">Gói gia đình</option>
@@ -61,14 +62,14 @@
                                   <option value="Gói cô đơn">Gói cô đơn</option>
                                 </select>
                             </div>
-                            <input type="text" class="quantity" name="quantity" placeholder="Số lượng vé" />
-                            <input type="datetime" class="date" name="date" placeholder="Ngày sử dụng" />
+                            <input type="text" class="quantity" name="quantity" placeholder="Số lượng vé" required/>
+                            <input type="datetime" class="date" name="date" placeholder="Ngày sử dụng" required/>
                             <a id="btn-calendar"><i class="fa fa-calendar"></i></a>
 
-                            <input type="text" class="fullname" name="fullname" placeholder="Họ và tên" />
-                            <input type="text" class="phone" name="phone" placeholder="Số điện thoại" />
-                            <input type="email" class="email" name="email" placeholder="Địa chỉ mail" />
-                            <button type="submit" class="reserve"><a href="/payment">Đặt vé</a></button>
+                            <input type="text" class="fullname" name="fullname" id="home_name" placeholder="Họ và tên" required/>
+                            <input type="text" class="phone" name="phone" placeholder="Số điện thoại" required/>
+                            <input type="email" class="email" name="email" placeholder="Địa chỉ mail" required/>
+                            <button type="submit" class="reserve">Đặt vé</button>
                         </form>
                     </div>
                 </div>

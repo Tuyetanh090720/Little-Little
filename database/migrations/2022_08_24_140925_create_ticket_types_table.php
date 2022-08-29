@@ -19,6 +19,8 @@ class CreateTicketTypesTable extends Migration
             $table->string('ticketTypeHeight');
             $table->string('weekdays');
             $table->integer('money');
+            $table->dateTime('updated_at');
+            $table->dateTime('created_at');
         });
     }
 

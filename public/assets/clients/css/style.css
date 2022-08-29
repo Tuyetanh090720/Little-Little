@@ -1664,8 +1664,15 @@ label {
     font-family: Montserrat;
     font-weight: 500;
     font-size: 20px;
-    padding: 5px 7px;
+    padding: 7px 7px;
     margin: 2.2px;
+}
+
+.days li:hover {
+    padding: 7px 0;
+    background: #FF8A00;
+    color: white !important;
+    border-radius: 50%;
 }
 
 .days .active {

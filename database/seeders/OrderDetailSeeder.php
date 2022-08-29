@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\orderDetail;
 
 class OrderDetailSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class OrderDetailSeeder extends Seeder
      */
     public function run()
     {
-        //
+        orderDetail::factory()->times(10)->create();
     }
 }

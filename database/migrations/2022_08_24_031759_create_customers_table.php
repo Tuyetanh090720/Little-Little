@@ -18,6 +18,8 @@ class CreateCustomersTable extends Migration
             $table->string('customerName');
             $table->string('customerPhone');
             $table->string('customerEmail');
+            $table->dateTime('updated_at');
+            $table->dateTime('created_at');
         });
     }
 

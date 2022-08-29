@@ -63,10 +63,10 @@
                                 </select>
                             </div>
                             <input type="text" class="quantity" name="quantity" placeholder="Số lượng vé" required/>
-                            <input type="datetime" class="date" name="date" placeholder="Ngày sử dụng" required/>
+                            <input type="datetime" class="date" name="date" id="home_date" placeholder="Ngày sử dụng" required/>
                             <a id="btn-calendar"><i class="fa fa-calendar"></i></a>
 
-                            <input type="text" class="fullname" name="fullname" id="home_name" placeholder="Họ và tên" required/>
+                            <input type="text" class="fullname" name="fullname" placeholder="Họ và tên" required/>
                             <input type="text" class="phone" name="phone" placeholder="Số điện thoại" required/>
                             <input type="email" class="email" name="email" placeholder="Địa chỉ mail" required/>
                             <button type="submit" class="reserve">Đặt vé</button>

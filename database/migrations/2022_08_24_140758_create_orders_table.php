@@ -26,6 +26,8 @@ class CreateOrdersTable extends Migration
             $table->dateTime('paymentExpiration');
             $table->string('CVC');
             $table->string('paymentStatus');
+            $table->dateTime('updated_at');
+            $table->dateTime('created_at');
         });
     }
 

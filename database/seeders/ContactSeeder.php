@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\contact;
 
 class ContactSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class ContactSeeder extends Seeder
      */
     public function run()
     {
-        //
+        contact::factory()->times(10)->create();
     }
 }

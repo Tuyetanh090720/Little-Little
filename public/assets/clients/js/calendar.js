@@ -1,21 +1,22 @@
-// hiển thị lịch
+////////////////////hiển thị lịch
 const btn_calendar = document.getElementById('btn-calendar')
 const calendar = document.getElementById('calendar')
 
-var click = 0
+let click = 0
 
 btn_calendar.addEventListener("click", () => {
     calendar.style.display = "block"
+    click += 1
 })
 
 window.addEventListener("click", () => {
-    click += 1
-    console.log(click)
     if (click % 2 == 0) {
         calendar.style.display = "none"
-        click = 0
     }
+    console.log(click)
+    click = 0
 })
+
 
 /////////////////////Hiển thị ngày tháng năm của lịch
 // Hiển thị tên tháng năm
@@ -37,6 +38,8 @@ var dateEle = document.getElementById('days');
 
 renderDate(currentYear, currentMonth)
 btn_prev.addEventListener("click", () => {
+    click += 1
+
     // xóa ngày của tháng trước
     // có thể sử dụng e.firstElementChild
     let child = dateEle.lastElementChild;
@@ -52,19 +55,21 @@ btn_prev.addEventListener("click", () => {
 
     // hiện ngày của tháng hiện tại
     currentMonth = currentMonth - 1
-    console.log(currentMonth)
+
     if ((currentMonth) < 0) {
         currentMonth = 11
         console.log(currentMonth)
         currentYear = currentYear - 1
     }
+
     monthEle.innerText = currentMonth + 1;
     yearEle.innerText = currentYear;
     renderDate(currentYear, currentMonth);
-
 })
 
 btn_next.addEventListener("click", () => {
+    click += 1
+
     // xóa ngày của tháng trước
     // có thể sử dụng e.firstElementChild
     let child = dateEle.lastElementChild;
@@ -85,6 +90,7 @@ btn_next.addEventListener("click", () => {
         currentMonth = 0
         currentYear = currentYear + 1
     }
+
     monthEle.innerText = currentMonth + 1;
     yearEle.innerText = currentYear;
     renderDate(currentYear, currentMonth);
@@ -116,6 +122,21 @@ function renderDate(y, m) {
             dateEle.innerHTML += `<li class="day active">${i + 1}</li>`;
             continue
         }
+
         dateEle.innerHTML += `<li class="day" id="day${i+1}">${i + 1}</li>`;
+    }
+
+    const li = document.querySelectorAll('.day')
+    const home_date = document.getElementById('home_date')
+    var d = 0
+    for (let i = 0; i < li.length; i++) {
+        li[i].addEventListener("click", () => {
+            li.forEach(l => {
+                l.classList.remove('active')
+            })
+            d = li[i].innerHTML
+            li[i].classList.add('active')
+            home_date.value = d + '/' + (m + 1) + '/' + y
+        })
     }
 }

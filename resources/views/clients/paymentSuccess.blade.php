@@ -11,88 +11,71 @@
                     <div class="main-content">
                         <div class="ticket-list">
                             <div class="row">
-                                <div class="slide" id="slide">
-                                    <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
-                                        <div class="block">
-                                            <div class="event-img qr-img image-resize view view-third ">
-                                                <a href=" ">
-                                                    <img src="{{asset('assets/clients/img/image31905-573-200w.png')}}" alt="" class="event-1">
-                                                </a>
-                                            </div>
-                                            <div class="ticket-information">
-                                                <h3 class="ticket-name ">ALT20210501</h3>
-                                                <span class="ticket-type ">Vé cổng</span><br/>
-                                                <span>---</span><br/>
-                                                <span class="ticket-date ">Ngày sử dụng: 31/05/2021</span><br/>
-                                                <i class="fa fa-check-circle"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
-                                        <div class="block">
-                                            <div class="event-img qr-img image-resize view view-third ">
-                                                <a href=" ">
-                                                    <img src="{{asset('assets/clients/img/image31906-350l-200w.png')}}" alt="" class="event-1">
-                                                </a>
-                                            </div>
-                                            <div class="ticket-information">
-                                                <h3 class="ticket-name ">ALT20210501</h3>
-                                                <span class="ticket-type ">Vé cổng</span><br/>
-                                                <span>---</span><br/>
-                                                <span class="ticket-date ">Ngày sử dụng: 31/05/2021</span><br/>
-                                                <i class="fa fa-check-circle"></i>
+                                @if ($quantity == 1)
+                                    <div class="slide" id="slide" style="width: 30%">
+                                        @foreach ($orderDetailList as $item)
+                                        <div class="col-md-{{12/$quantity}} col-sm-6 sol-xs-6 pro-loop">
+                                            <div class="block">
+                                                <div class="event-img qr-img image-resize view view-third ">
+                                                    <a href=" ">
+                                                        <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(500)->generate('{{$item->orderDetailId}}')) !!}">
+                                                    </a>
+                                                </div>
+                                                <div class="ticket-information">
+                                                    <h3 class="ticket-name ">ALT{{$item->orderDetailId}}</h3>
+                                                    <span class="ticket-type ">Vé cổng</span><br/>
+                                                    <span>---</span><br/>
+                                                    <span class="ticket-date ">Ngày sử dụng: {{$item->validate}}</span><br/>
+                                                    <i class="fa fa-check-circle"></i>
+                                                </div>
                                             </div>
                                         </div>
+                                        @endforeach
                                     </div>
-                                    <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
-                                        <div class="block">
-                                            <div class="event-img qr-img image-resize view view-third ">
-                                                <a href=" ">
-                                                    <img src="{{asset('assets/clients/img/image31906-te1-200w.png')}}" alt="" class="event-1">
-                                                </a>
-                                            </div>
-                                            <div class="ticket-information">
-                                                <h3 class="ticket-name ">ALT20210501</h3>
-                                                <span class="ticket-type ">Vé cổng</span><br/>
-                                                <span>---</span><br/>
-                                                <span class="ticket-date ">Ngày sử dụng: 31/05/2021</span><br/>
-                                                <i class="fa fa-check-circle"></i>
+                                @endif
+                                @if ($quantity < 4 && $quantity > 1)
+                                    <div class="slide" id="slide" style="width: 50%">
+                                        @foreach ($orderDetailList as $item)
+                                        <div class="col-md-{{12/$quantity}} col-sm-6 sol-xs-6 pro-loop">
+                                            <div class="block">
+                                                <div class="event-img qr-img image-resize view view-third ">
+                                                    <a href=" ">
+                                                        <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(500)->generate('{{$item->orderDetailId}}')) !!} ">                                                    </a>
+                                                </div>
+                                                <div class="ticket-information">
+                                                    <h3 class="ticket-name ">ALT{{$item->orderDetailId}}</h3>
+                                                    <span class="ticket-type ">Vé cổng</span><br/>
+                                                    <span>---</span><br/>
+                                                    <span class="ticket-date ">Ngày sử dụng: {{$item->validate}}</span><br/>
+                                                    <i class="fa fa-check-circle"></i>
+                                                </div>
                                             </div>
                                         </div>
+                                        @endforeach
                                     </div>
-                                    <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
-                                        <div class="block">
-                                            <div class="event-img qr-img image-resize view view-third ">
-                                                <a href=" ">
-                                                    <img src="{{asset('assets/clients/img/image31906-z5e3-200w.png')}}" alt="" class="event-1">
-                                                </a>
-                                            </div>
-                                            <div class="ticket-information">
-                                                <h3 class="ticket-name ">ALT20210501</h3>
-                                                <span class="ticket-type ">Vé cổng</span><br/>
-                                                <span>---</span><br/>
-                                                <span class="ticket-date ">Ngày sử dụng: 31/05/2021</span><br/>
-                                                <i class="fa fa-check-circle"></i>
+                                @endif
+                                @if($quantity >= 4 )
+                                    <div class="slide" id="slide" style="width: 100%">
+                                        @foreach ($orderDetailList as $item)
+                                        <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
+                                            <div class="block">
+                                                <div class="event-img qr-img image-resize view view-third ">
+                                                    <a href=" ">
+                                                        <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(500)->generate('{{$item->orderDetailId}}')) !!} ">
+                                                    </a>
+                                                </div>
+                                                <div class="ticket-information">
+                                                    <h3 class="ticket-name ">ALT{{$item->orderDetailId}}</h3>
+                                                    <span class="ticket-type ">Vé cổng</span><br/>
+                                                    <span>---</span><br/>
+                                                    <span class="ticket-date ">Ngày sử dụng: {{$item->validate}}</span><br/>
+                                                    <i class="fa fa-check-circle"></i>
+                                                </div>
                                             </div>
                                         </div>
+                                        @endforeach
                                     </div>
-                                    <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
-                                        <div class="block">
-                                            <div class="event-img qr-img image-resize view view-third ">
-                                                <a href=" ">
-                                                    <img src="{{asset('assets/clients/img/image31906-z5e3-200w.png')}}" alt="" class="event-1">
-                                                </a>
-                                            </div>
-                                            <div class="ticket-information">
-                                                <h3 class="ticket-name ">ALT20210501</h3>
-                                                <span class="ticket-type ">Vé cổng</span><br/>
-                                                <span>---</span><br/>
-                                                <span class="ticket-date ">Ngày sử dụng: 31/05/2021</span><br/>
-                                                <i class="fa fa-check-circle"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endif
                                 <button class="arrow left-arrow" id="left-arrow">
                                 <i class="fa fa-chevron-left"></i>
                                 </button>

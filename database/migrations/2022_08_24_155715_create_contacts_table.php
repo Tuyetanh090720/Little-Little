@@ -21,8 +21,8 @@ class CreateContactsTable extends Migration
             $table->string('contactAddress');
             $table->string('contactMessage');
             $table->string('contactStatus');
-            $table->dateTime('updated_at');
-            $table->dateTime('created_at');
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 

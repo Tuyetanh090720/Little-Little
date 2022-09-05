@@ -18,8 +18,8 @@ class TicketTypeFactory extends Factory
             'money' => $this->faker->randomNumber(),
             'ticketTypeHeight' => $this->faker->sentence(5, true),
             'weekdays' => $this->faker->sentence(2, true),
-            'updated_at' => $this->faker->dateTime(),
             'created_at' => $this->faker->dateTime(),
+            'updated_at' => $this->faker->dateTime(),
         ];
     }
 }

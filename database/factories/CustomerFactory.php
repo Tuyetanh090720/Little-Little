@@ -17,8 +17,8 @@ class CustomerFactory extends Factory
             'customerName'  => $this->faker->name(),
             'customerPhone' => $this->faker->phoneNumber(),
             'customerEmail' => $this->faker->email(),
-            'updated_at' => $this->faker->dateTime(),
             'created_at' => $this->faker->dateTime(),
+            'updated_at' => $this->faker->dateTime(),
         ];
     }
 }

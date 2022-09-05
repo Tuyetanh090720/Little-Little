@@ -57,15 +57,14 @@
                             @csrf
                             <div class="package-dropdown">
                                 <select name="package" id="package-option" class="package-option">
-                                  <option value="Gói gia đình">Gói gia đình</option>
-                                  <option value="Gói nhóm bạn">Gói nhóm bạn</option>
-                                  <option value="Gói cô đơn">Gói cô đơn</option>
+                                    @foreach ($ticketTypeList as $key => $item)
+                                    <option value="{{$item->ticketTypeName}}">{{$item->ticketTypeName}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <input type="text" class="quantity" name="quantity" placeholder="Số lượng vé" required/>
-                            <input type="datetime" class="date" name="date" id="home_date" placeholder="Ngày sử dụng" required/>
+                            <input type="datetime" class="date" name="date" id="date" placeholder="Ngày sử dụng" required/>
                             <a id="btn-calendar"><i class="fa fa-calendar"></i></a>
-
                             <input type="text" class="fullname" name="fullname" placeholder="Họ và tên" required/>
                             <input type="text" class="phone" name="phone" placeholder="Số điện thoại" required/>
                             <input type="email" class="email" name="email" placeholder="Địa chỉ mail" required/>

@@ -13,7 +13,6 @@ window.addEventListener("click", () => {
     if (click % 2 == 0) {
         calendar.style.display = "none"
     }
-    console.log(click)
     click = 0
 })
 
@@ -127,7 +126,8 @@ function renderDate(y, m) {
     }
 
     const li = document.querySelectorAll('.day')
-    const home_date = document.getElementById('home_date')
+    const date = document.getElementById('date')
+
     var d = 0
     for (let i = 0; i < li.length; i++) {
         li[i].addEventListener("click", () => {
@@ -136,7 +136,7 @@ function renderDate(y, m) {
             })
             d = li[i].innerHTML
             li[i].classList.add('active')
-            home_date.value = d + '/' + (m + 1) + '/' + y
+            date.value = d + '/' + (m + 1) + '/' + y
         })
     }
 }

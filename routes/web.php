@@ -28,5 +28,10 @@ Route::prefix('')->name('clients.')->group(function() {
 
     Route::post('/payment', [PaymentController::class, 'showPayment'])->name('showPayment');
 
-    Route::get('/paymentSuccess', [PaymentController::class, 'showPaymentSuccess'])->name('showPaymentSuccess');
+    Route::post('/paymentSuccess', [PaymentController::class, 'payment'])->name('payment');
+
+    Route::get('q', function () {
+        return QrCode::size(500)->generate('Welcome to kerneldev.com!');
+    });
+
 });

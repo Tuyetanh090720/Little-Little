@@ -17,10 +17,10 @@ class CreateOrderDetailsTable extends Migration
             $table->increments('orderDetailId');
             $table->unsignedInteger('orderId');
             $table->foreign('orderId')->references('orderId')->on('orders');
-            $table->dateTime('validDate');
+            $table->date('validate');
             $table->string('ticketStatus');
-            $table->dateTime('updated_at');
-            $table->dateTime('created_at');
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 

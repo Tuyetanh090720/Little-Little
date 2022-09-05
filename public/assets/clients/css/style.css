@@ -1467,22 +1467,18 @@ label {
     width: 70%
 }
 
-.payment-information {
-    padding: 40px 0;
+.payment-form .date {
+    width: 70%;
 }
 
-.payment-information .expiry-date {
-    width: 75%;
-}
-
-.payment-information a {
+.payment-form a {
     color: #fff;
 }
 
-.payment-information i {
+.payment-form i {
     background: #FFDE32;
+    width: 50px;
     font-size: 25px;
-    width: 17%;
     font-weight: 700;
     height: 50px;
     padding: 10px 10px;
@@ -1490,6 +1486,10 @@ label {
     text-align: center;
     border-radius: 15px;
     box-shadow: 2px 4px 1px 2px #ffa90b;
+}
+
+.payment-information {
+    padding: 40px 0;
 }
 
 .payment-information .CVC {
@@ -1528,7 +1528,6 @@ label {
 
 .qr-img img {
     margin-top: 30px;
-    width: 70%;
 }
 
 .ticket-information {

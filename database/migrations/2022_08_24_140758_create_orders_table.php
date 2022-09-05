@@ -19,15 +19,15 @@ class CreateOrdersTable extends Migration
             $table->foreign('customerId')->references('customerId')->on('customers');
             $table->unsignedInteger('ticketTypeId');
             $table->foreign('ticketTypeId')->references('ticketTypeId')->on('ticket_types');
-            $table->integer('totalMoney');
+            $table->bigInteger('totalMoney');
             $table->integer('quantity');
             $table->string('cardNumber');
             $table->string('cardName');
-            $table->dateTime('paymentExpiration');
+            $table->date('expiration');
             $table->string('CVC');
             $table->string('paymentStatus');
-            $table->dateTime('updated_at');
-            $table->dateTime('created_at');
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 

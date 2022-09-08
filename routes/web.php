@@ -26,12 +26,11 @@ Route::prefix('')->name('clients.')->group(function() {
 
     Route::get('/contactus', [ContactController::class, 'index'])->name('index');
 
-    Route::post('/payment', [PaymentController::class, 'showPayment'])->name('showPayment');
+    Route::post('/contactus', [ContactController::class, 'addContacts'])->name('addContacts');
 
-    Route::post('/paymentSuccess', [PaymentController::class, 'payment'])->name('payment');
+    Route::post('/payment', [PaymentController::class, 'showPayment'])->name('payment');
 
-    Route::get('q', function () {
-        return QrCode::size(500)->generate('Welcome to kerneldev.com!');
-    });
+    Route::post('/paymentSuccess', [PaymentController::class, 'payment'])->name('paymentSuccess');
 
+    Route::get('/paymentSuccess/{flag?}/{quantity?}/{orderId?}/{customerEmail?}', [PaymentController::class, 'download'])->name('download');
 });

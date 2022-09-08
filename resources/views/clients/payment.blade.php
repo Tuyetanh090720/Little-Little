@@ -20,17 +20,23 @@
                         <div class="form-group col-lg-5 col-md-5">
                             <label for="totalMoney">Số tiền thanh toán</label><br/>
                             <input type="hidden" class="money" name="money" id="money" value="{{$money}}"/>
-                            <input type="text" class="totalMoney" name="totalMoney" id="totalMoney" value="{{$money * $quantity}}" required readonly/>
+                            <input type="text" class="totalMoney" name="totalMoney" id="totalMoney" value="{{$money * $quantity}}" readonly/>
                         </div>
                         <div class="form-group col-lg-3 col-md-3">
                             <label for="quantity">Số lượng vé</label><br/>
                             <input type="number" class="quantity" name="quantity" id="quantity" value="{{$quantity}}" min='1' onchange="ChangeQuantity(event)" required />
                             <span>Vé</span>
+                            @error('quantity')
+                                <span class="error"> *{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="form-group col-lg-4 col-md-4">
                             <label for="date">Ngày sử dụng</label><br/>
                             <input type="datetime" class="date" name="date" id="date" value="{{$date}}" required/>
                             <a id="btn-calendar"><i class="fa fa-calendar"></i></a>
+                            @error('date')
+                                <span class="error"> *{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="form-group col-lg-12 col-md-12">
                             <label for="customerName">Thông tin liên hệ</label><br/>

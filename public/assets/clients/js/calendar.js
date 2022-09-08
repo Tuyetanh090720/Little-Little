@@ -136,7 +136,7 @@ function renderDate(y, m) {
             })
             d = li[i].innerHTML
             li[i].classList.add('active')
-            date.value = d + '/' + (m + 1) + '/' + y
+            date.value = d + '-' + (m + 1) + '-' + y
         })
     }
 }

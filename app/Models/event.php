@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
-class customer extends Model
+class event extends Model
 {
     use HasFactory;
     protected $table = 'customers';
@@ -16,10 +16,4 @@ class customer extends Model
 
         return $id;
     }
-    public function getEmail($customerId){
-        $customer = DB::table($this->table)->where('customerId', $customerId)->first();
-
-        return $customer->customerEmail;
-    }
-
 }

@@ -3,9 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Carbon\Carbon;
 
-class CreateCustomersTable extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +13,13 @@ class CreateCustomersTable extends Migration
      */
     public function up()
     {
-        Schema::create('customers', function (Blueprint $table) {
-            $table->increments('customerId');
-            $table->string('customerName');
-            $table->string('customerPhone');
-            $table->string('customerEmail');
+        Schema::create('events', function (Blueprint $table) {
+            $table->increments('eventId');
+            $table->string('eventName');
+            $table->date('start_at');
+            $table->date('end_at');
+            $table->string('money');
+            $table->text('eventDetail');
             $table->date('created_at');
             $table->date('updated_at');
         });
@@ -31,6 +32,6 @@ class CreateCustomersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customers');
+        Schema::dropIfExists('events');
     }
 }

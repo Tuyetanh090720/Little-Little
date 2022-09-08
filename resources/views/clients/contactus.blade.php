@@ -8,12 +8,13 @@
         <div class="col-lg-7 col-md-7 contact background-block">
             <div class="contact-form border-block">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nobis at dolor optio totam voluptate aut, sapiente neque, quas deserunt iste? Eligendi labore quae laudantium animi minus. Quo, illo culpa.</p>
-                <form>
-                    <input type="text" class="name-contact" name="name-contact" placeholder="Tên" />
-                    <input type="email" class="email-contact" name="email-contact" placeholder="Địa chỉ mail" />
-                    <input type="text" class="phone-contact" name="phone-contact" placeholder="Số điện thoại" />
-                    <input type="text" class="address-contact" name="address" placeholder="Địa chỉ" />
-                    <textarea name="message" class="message-contact" cols="45" rows="8" placeholder="Lời nhắn"></textarea>
+                <form action="/contactus" method="POST">
+                    @csrf
+                    <input type="text" class="name-contact" name="contactName" placeholder="Tên" />
+                    <input type="email" class="email-contact" name="contactEmail" placeholder="Địa chỉ mail" />
+                    <input type="text" class="phone-contact" name="contactPhone" placeholder="Số điện thoại" />
+                    <input type="text" class="address-contact" name="contactAddress" placeholder="Địa chỉ" />
+                    <textarea name="contactMessage" class="message-contact" cols="45" rows="8" placeholder="Lời nhắn"></textarea>
                     <button type="submit" class="send">Gửi liên hệ</button>
                 </form>
             </div>
@@ -57,5 +58,9 @@
     <div class="decord-contact">
         <img src="{{asset('assets/clients/img/alexarlaydoshadow11941-fuc-500w.png')}}" alt="" class="contact-img-1">
     </div>
+
+    {!! $alert!!}
+
+    <script src="{{asset('assets/clients/js/alert.js')}}"></script>
 </div>
 @endsection

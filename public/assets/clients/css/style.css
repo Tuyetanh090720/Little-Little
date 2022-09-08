@@ -1001,6 +1001,7 @@ textarea {
     box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
     border-radius: 16px;
     margin-bottom: 15px;
+    margin-top: 15px;
     width: 100%;
     height: 110px;
     outline: none;
@@ -1019,7 +1020,6 @@ textarea {
     padding-left: 15px;
     outline: none;
     border: none;
-    margin-bottom: 15px;
 }
 
 .callout {
@@ -1107,15 +1107,17 @@ textarea {
 }
 
 .content-item .reservation .reserve-form input {
-    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .content-item .reservation .reserve-form .quantity {
-    width: 40%;
+    width: 100%;
 }
 
 .content-item .reservation .reserve-form .date {
-    width: 40%;
+    width: 70%;
+    margin-right: 10px;
+    margin-left: -15px;
 }
 
 .content-item .reservation .reserve-form a {
@@ -1125,9 +1127,7 @@ textarea {
 .content-item .reservation .reserve-form i {
     background: #FFDE32;
     font-size: 25px;
-    width: 15%;
     font-weight: 700;
-    height: 50px;
     padding: 10px 10px;
     text-align: center;
     border-radius: 15px;
@@ -1147,6 +1147,7 @@ textarea {
     font-family: 'Coiny', cursive;
     color: #fff;
     margin-left: 60px;
+    margin-top: 15px;
 }
 
 .decord-item .image-1 {
@@ -1229,7 +1230,6 @@ textarea {
 
 .block {
     overflow: hidden;
-    width: 100;
     position: relative;
     border-color: transparent;
     border-style: solid;
@@ -1389,7 +1389,7 @@ textarea {
 }
 
 .contact .contact-form input {
-    margin-bottom: 15px;
+    margin-top: 15px;
     margin-left: 40px;
 }
 
@@ -1441,6 +1441,26 @@ textarea {
     width: 15%;
     left: -2%;
     z-index: 11;
+}
+
+.alert {
+    width: 30%;
+    background-color: #fff;
+    color: #0f0f0f;
+    border-radius: 20px;
+    position: fixed;
+    z-index: 1000000;
+    top: 0;
+    left: 30%;
+    border: 1px solid #ffa90b;
+}
+
+.alert-content {
+    padding: 20px 20px;
+}
+
+.close:focus {
+    outline: none;
 }
 
 
@@ -1679,4 +1699,12 @@ label {
     background: #FF8A00;
     color: white !important;
     border-radius: 50%;
+}
+
+
+/* error */
+
+.error {
+    color: red;
+    font-size: 12px;
 }

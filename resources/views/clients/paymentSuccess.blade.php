@@ -18,7 +18,7 @@
                                             <div class="block">
                                                 <div class="event-img qr-img image-resize view view-third ">
                                                     <a href=" ">
-                                                        <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(500)->generate('{{$item->orderDetailId}}')) !!}">
+                                                        <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(500)->generate('.'$item->orderDetailId'.')) !!}">
                                                     </a>
                                                 </div>
                                                 <div class="ticket-information">
@@ -40,7 +40,7 @@
                                             <div class="block">
                                                 <div class="event-img qr-img image-resize view view-third ">
                                                     <a href=" ">
-                                                        <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(500)->generate('{{$item->orderDetailId}}')) !!} ">                                                    </a>
+                                                        <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(500)->generate('.'$item->orderDetailId'.')) !!} ">                                                    </a>
                                                 </div>
                                                 <div class="ticket-information">
                                                     <h3 class="ticket-name ">ALT{{$item->orderDetailId}}</h3>
@@ -61,7 +61,7 @@
                                             <div class="block">
                                                 <div class="event-img qr-img image-resize view view-third ">
                                                     <a href=" ">
-                                                        <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(500)->generate('{{$item->orderDetailId}}')) !!} ">
+                                                        <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(500)->generate('.'$item->orderDetailId'.')) !!} ">
                                                     </a>
                                                 </div>
                                                 <div class="ticket-information">
@@ -89,9 +89,14 @@
             </div>
         </div>
     </div>
+
     <div class="get-ticket">
-        <button class="down-ticket"><a href="">Tải về</a></button>
-        <button class="mail-ticket"><a href="">Gửi mail</a></button>
+        <button class="down-ticket">
+            <a href="{{route('clients.download', ['flag'=>'pdf', 'quantity'=>$quantity, 'orderId'=>$orderId, 'customerEmail'=>$customerEmail])}}">Tải về</a>
+        </button>
+        <button class="mail-ticket">
+            <a href="{{route('clients.download', ['flag'=>'email', 'quantity'=>$quantity, 'orderId'=>$orderId, 'customerEmail'=>$customerEmail])}}">Gửi mail</a>
+        </button>
     </div>
     <div class="decord-item">
         <img src="{{asset('assets/clients/img/alvinarnoldvotay112351-zko9-600w.png')}}" alt="" class="payment-image">

@@ -62,12 +62,39 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <input type="text" class="quantity" name="quantity" placeholder="Số lượng vé" required/>
-                            <input type="datetime" class="date" name="date" id="date" placeholder="Ngày sử dụng" required/>
-                            <a id="btn-calendar"><i class="fa fa-calendar"></i></a>
+                            <div class="error-block row">
+                                <div class="col-md-5 col-sm-5">
+                                    <input type="number" class="quantity" name="quantity" placeholder="Số lượng vé" required/>
+                                    @error('quantity')
+                                        <span class="error"> *{{$message}}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-7 col-sm-7">
+                                    <input type="datetime" class="date" name="date" id="date" placeholder="Ngày sử dụng" required/>
+                                    <a id="btn-calendar"><i class="fa fa-calendar"></i></a>
+                                    @error('date')
+                                    <span class="error"> *{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
                             <input type="text" class="fullname" name="fullname" placeholder="Họ và tên" required/>
+                            <div class="error-block">
+                                @error('fullname')
+                                    <span class="error"> *{{$message}}</span>
+                                @enderror
+                            </div>
                             <input type="text" class="phone" name="phone" placeholder="Số điện thoại" required/>
+                            <div class="error-block">
+                                @error('phone')
+                                    <span class="error"> *{{$message}}</span>
+                                @enderror
+                            </div>
                             <input type="email" class="email" name="email" placeholder="Địa chỉ mail" required/>
+                            <div class="error-block">
+                                @error('email')
+                                    <span class="error"> *{{$message}}</span>
+                                @enderror
+                            </div>
                             <button type="submit" class="reserve">Đặt vé</button>
                         </form>
                     </div>

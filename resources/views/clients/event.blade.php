@@ -12,11 +12,11 @@
                         @if ($length == 1)
                             <div class="slide" id="slide">
                                 @foreach ($eventList as $item)
-                                    <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
+                                    <div class="col-md-{{12/$length}} col-sm-6 sol-xs-6 pro-loop">
                                         <div class="block">
                                             <div class="event-img image-resize view view-third ">
                                                 <a href=" ">
-                                                    <img src="{{asset('assets/clients/img/rectangle11265-a1co-300h.png')}}" alt="" class="event-1">
+                                                    <img src="{!! asset("storage/img/$item->eventId.jpg") !!}" alt="" class="event-1">
                                                 </a>
                                             </div>
                                             <div class="event-information">
@@ -26,7 +26,7 @@
                                                 <span class="event-date ">{{$item->start_at}}-{{$item->end_at}}</span>
                                                 <div class="event-price ">25000 VNĐ</div>
                                                 <div class="detail">
-                                                    <a href="/eventDetail" >Xem chi tiết</a>
+                                                    <a href="/event/{{$item->eventId}}" >Xem chi tiết</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -37,11 +37,11 @@
                         @if ($length < 4 && $length > 1)
                         <div class="slide" id="slide">
                             @foreach ($eventList as $item)
-                                <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
+                                <div class="col-md-{{12/$length}} col-sm-6 sol-xs-6 pro-loop">
                                     <div class="block">
                                         <div class="event-img image-resize view view-third ">
                                             <a href=" ">
-                                                <img src="{{asset('assets/clients/img/rectangle11265-a1co-300h.png')}}" alt="" class="event-1">
+                                                <img src="{!! asset("storage/img/$item->eventId.jpg") !!}" alt="" class="event-1">
                                             </a>
                                         </div>
                                         <div class="event-information">
@@ -51,7 +51,7 @@
                                             <span class="event-date ">30/05/2021-1/6/2021</span>
                                             <div class="event-price ">25000 VNĐ</div>
                                             <div class="detail">
-                                                <a href="/eventDetail" >Xem chi tiết</a>
+                                                <a href="/event/{{$item->eventId}}" >Xem chi tiết</a>
                                             </div>
                                         </div>
                                     </div>
@@ -62,11 +62,11 @@
                         @if ($length >= 4)
                         <div class="slide" id="slide">
                             @foreach ($eventList as $item)
-                                <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
+                                <div class="col-md-{{12/$length}} col-sm-6 sol-xs-6 pro-loop">
                                     <div class="block">
                                         <div class="event-img image-resize view view-third ">
                                             <a href=" ">
-                                                <img src="{{asset('assets/clients/img/rectangle11265-a1co-300h.png')}}" alt="" class="event-1">
+                                                <img src="{!! asset("storage/img/$item->eventId.jpg") !!}" alt="" class="event-1">
                                             </a>
                                         </div>
                                         <div class="event-information">

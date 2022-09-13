@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\event;
 
 class EventSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class EventSeeder extends Seeder
      */
     public function run()
     {
-        //
+        event::factory()->times(5)->create();
     }
 }

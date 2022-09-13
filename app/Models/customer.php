@@ -16,10 +16,21 @@ class customer extends Model
 
         return $id;
     }
-    public function getEmail($customerId){
-        $customer = DB::table($this->table)->where('customerId', $customerId)->first();
 
-        return $customer->customerEmail;
+    public function getAllCustomers(){
+        return DB::table($this->table)->get();
+    }
+
+    public function getCustomer($customerId){
+        return DB::table($this->table)->where('customerId', $customerId)->first();
+    }
+
+    public function updateCustomer($data, $id){
+        return  DB::table($this->table)->where('customerId', $id)->update($data);
+    }
+
+    public function deleteCustomer($customerId){
+        return  DB::table($this->table)->where('customerId', $customerId)->delete();
     }
 
 }

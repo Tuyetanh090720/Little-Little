@@ -58,35 +58,34 @@ class PaymentController extends Controller
         return view('clients.payment', compact('package', 'quantity', 'money', 'date', 'fullname', 'phone', 'email'));
     }
 
+    // $rq -> validate(
+    //     [
+    //         'quantity' => 'required|integer|min:1',
+    //         'date' => 'required|after:tomorrow',
+    //         'customerName' => 'required|min:6|max:50',
+    //         'customerPhone' => 'required|numeric',
+    //         'customerEmail' => 'required|email',
+    //         'cardNumber' => 'required|numeric|digits:12|digits:19',
+    //         'cardName' => 'required|min:4|max:50',
+    //         'date' => 'required',
+    //         'CVC' => 'required|digits:4',
+    //     ],
+    //     [
+    //         'required' => 'Vui lòng nhập dữ liệu',
+    //         'quantity.min' => 'Số lượng lớn hơn 0',
+    //         'customerName.min' => 'Tên phải dài hơn 4 ký tự',
+    //         'customerName.max' => 'Tên phải ngắn hơn 50 ký tự',
+    //         'cardName.min' => 'Tên phải dài hơn 4 ký tự',
+    //         'cardName.max' => 'Tên phải ngắn hơn 50 ký tự',
+    //         'cardNumber.digits' => 'Số tài khoản phải 12 hoặc 19 ký tự',
+    //         'CVC.digits' => 'CVC phải 4 ký tự',
+    //         'after' => 'Phải nhập sau ngày hôm nay',
+    //         'numeric' => 'Phải nhập số',
+    //         'email' => 'Phải nhập email',
+    //     ]
+    // );
+
     public function payment(Request $rq){
-
-        $rq -> validate(
-            [
-                'quantity' => 'required|integer|min:1',
-                'date' => 'required|after:tomorrow',
-                // 'customerName' => 'required|min:6|max:50',
-                // 'customerPhone' => 'required|numeric',
-                // 'customerEmail' => 'required|email',
-                // 'cardNumber' => 'required|numeric|digits:12|digits:19',
-                // 'cardName' => 'required|min:4|max:50',
-                // 'date' => 'required',
-                // 'CVC' => 'required|digits:4',
-            ],
-            [
-                'required' => 'Vui lòng nhập dữ liệu',
-                'quantity.min' => 'Số lượng lớn hơn 0',
-                // 'customerName.min' => 'Tên phải dài hơn 4 ký tự',
-                // 'customerName.max' => 'Tên phải ngắn hơn 50 ký tự',
-                // 'cardName.min' => 'Tên phải dài hơn 4 ký tự',
-                // 'cardName.max' => 'Tên phải ngắn hơn 50 ký tự',
-                // 'cardNumber.digits' => 'Số tài khoản phải 12 hoặc 19 ký tự',
-                // 'CVC.digits' => 'CVC phải 4 ký tự',
-                'after' => 'Phải nhập sau ngày hôm nay',
-                'numeric' => 'Phải nhập số',
-                'email' => 'Phải nhập email',
-            ]
-        );
-
         $customer = new customer();
         $order = new order();
         $orderDetail = new orderDetail();
@@ -102,7 +101,7 @@ class PaymentController extends Controller
         // thêm khách hàng và lấy id khách hàng đó
         $customerData = array_merge($rq->only('customerName', 'customerPhone', 'customerEmail'), $arrdate);
         $customerId = $customer->insertGetId($customerData);
-        $customerEmail = $customer->getEmail($customerId);
+        $customerEmail = $customer->getCustomer($customerId)->customerEmail;
 
         // lấy id loại vé đã chọn
         $ticketTypeId = $ticketType->getTicketTypeID($package);
@@ -119,7 +118,12 @@ class PaymentController extends Controller
 
         // thêm orderDetail
         $ticketStatus = "Chưa sử dụng";
-        $arrayOD = ['orderId'=>$orderId,'validate' => date_create($rq->validate), 'ticketStatus'=>$ticketStatus];
+
+        $v = explode('-',$rq->validate);
+        $vd = Carbon::create($v[2], $v[1], $v[0], 0);
+        $validate = $vd->toDateString();
+
+        $arrayOD = ['orderId'=>$orderId,'validate' => $validate, 'ticketStatus'=>$ticketStatus];
         $orderDTData = array_merge($arrayOD, $arrdate);
 
         for($i = 0; $i < $quantity; $i++){

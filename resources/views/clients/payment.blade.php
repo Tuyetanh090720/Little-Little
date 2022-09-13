@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group col-lg-4 col-md-4">
                             <label for="date">Ngày sử dụng</label><br/>
-                            <input type="datetime" class="date" name="date" id="date" value="{{$date}}" required/>
+                            <input type="datetime" class="validate" name="validate" id="date" value="{{$date}}" required/>
                             <a id="btn-calendar"><i class="fa fa-calendar"></i></a>
                             @error('date')
                                 <span class="error"> *{{$message}}</span>
@@ -41,14 +41,23 @@
                         <div class="form-group col-lg-12 col-md-12">
                             <label for="customerName">Thông tin liên hệ</label><br/>
                             <input type="text" class="customerName" id="payname" name="customerName" value="{{$fullname}}" required/>
+                            @error('customerName')
+                                <span class="error"> *{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="form-group col-lg-12 col-md-12">
                             <label for="customerPhone">Điện thoại</label><br/>
                             <input type="text" class="customerPhone" name="customerPhone" value="{{$phone}}" required/>
+                            @error('customerPhone')
+                                <span class="error"> *{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="form-group col-lg-12 col-md-12">
                             <label for="customerEmail">Email</label><br/>
                             <input type="email" class="customerEmail" name="customerEmail" value="{{$email}}" required/>
+                            @error('customerEmail')
+                                <span class="error"> *{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -64,18 +73,30 @@
                         <div class="form-group">
                             <label for="card-number">Số thẻ</label><br/>
                             <input type="text" class="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required/>
+                            @error('cardNumber')
+                                <span class="error"> *{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="namecard">Họ tên chủ thẻ</label><br/>
                             <input type="text" class="cardName" name="cardName" placeholder="NGUYEN VAN A" required/>
+                            @error('cardName')
+                                <span class="error"> *{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="expiry-date">Ngày hết hạn</label><br/>
-                            <input type="text" class="expiration" name="expiration" placeholder="05/2025" required/>
+                            <input type="text" class="expiration" name="expiration" placeholder="02/05/2025" required/>
+                            @error('expiration')
+                                <span class="error"> *{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="CVC">CVV/CVC</label><br/>
                             <input type="password" class="CVC" name="CVC" placeholder="***" required/>
+                            @error('CVC')
+                                <span class="error"> *{{$message}}</span>
+                            @enderror
                         </div>
                         <button type="submit" class="payment">Thanh toán</button>
                     </div>

@@ -1301,7 +1301,9 @@ textarea {
     border-radius: 10px;
     box-shadow: inset -3px -3px 9px 0px #d23333;
     text-align: center;
-    margin: 10px 0 20px 0;
+    justify-items: center;
+    margin: auto;
+    margin-bottom: 20px;
 }
 
 .event-information .detail a {
@@ -1372,6 +1374,17 @@ textarea {
     background-color: #FFF6D4;
     border-radius: 50px;
     padding: 30px 40px;
+}
+
+.event-detail .detail-img {
+    margin-bottom: 30px;
+}
+
+.event-p {
+    column-count: 3;
+    text-align: justify;
+    column-gap: 30px;
+    column-span: 3;
 }
 
 
@@ -1487,7 +1500,7 @@ label {
     width: 70%
 }
 
-.payment-form .date {
+.payment-form .validate {
     width: 70%;
 }
 

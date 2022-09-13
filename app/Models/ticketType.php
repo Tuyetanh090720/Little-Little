@@ -18,6 +18,10 @@ class ticketType extends Model
         return $tt;
     }
 
+    public function addTicketTypes($data){
+        return DB::table($this->table)->insert($data);
+    }
+
     public function getTicketTypeID($name){
         $ticketType = new ticketType();
         $ticketTypeList = $ticketType->getAllTicketTypes();
@@ -28,5 +32,17 @@ class ticketType extends Model
             }
         }
         return $ticketTypeId;
+    }
+
+    public function getTicketTypes($id){
+        return DB::table($this->table)->where('ticketTypeId', $id)->first();
+    }
+
+    public function updateTicketTypes($data, $id){
+        return  DB::table($this->table)->where('ticketTypeId', $id)->update($data);
+    }
+
+    public function deleteTicketTypes($id){
+        return  DB::table($this->table)->where('ticketTypeId', $id)->delete();
     }
 }

@@ -9,122 +9,81 @@
             <div class="main-content">
                 <div class="event-list">
                     <div class="row content-event">
+                        @if ($length == 1)
+                            <div class="slide" id="slide">
+                                @foreach ($eventList as $item)
+                                    <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
+                                        <div class="block">
+                                            <div class="event-img image-resize view view-third ">
+                                                <a href=" ">
+                                                    <img src="{{asset('assets/clients/img/rectangle11265-a1co-300h.png')}}" alt="" class="event-1">
+                                                </a>
+                                            </div>
+                                            <div class="event-information">
+                                                <h3 class="event-name ">Sự kiện {{$count++}}</h3>
+                                                <span class="event-address ">Đầm sen park</span><br/>
+                                                <i class="fa fa-calendar"></i>
+                                                <span class="event-date ">{{$item->start_at}}-{{$item->end_at}}</span>
+                                                <div class="event-price ">25000 VNĐ</div>
+                                                <div class="detail">
+                                                    <a href="/eventDetail" >Xem chi tiết</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                        @if ($length < 4 && $length > 1)
                         <div class="slide" id="slide">
-                            <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
-                                <div class="block">
-                                    <div class="event-img image-resize view view-third ">
-                                        <a href=" ">
-                                            <img src="{{asset('assets/clients/img/rectangle11265-a1co-300h.png')}}" alt="" class="event-1">
-                                        </a>
-                                    </div>
-                                    <div class="event-information">
-                                        <h3 class="event-name ">Sự kiện 1</h3>
-                                        <span class="event-address ">Đầm sen park</span><br/>
-                                        <i class="fa fa-calendar"></i>
-                                        <span class="event-date ">30/05/2021-1/6/2021</span>
-                                        <div class="event-price ">25000 VNĐ</div>
-                                        <div class="detail">
-                                            <a href="/eventDetail" >Xem chi tiết</a>
+                            @foreach ($eventList as $item)
+                                <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
+                                    <div class="block">
+                                        <div class="event-img image-resize view view-third ">
+                                            <a href=" ">
+                                                <img src="{{asset('assets/clients/img/rectangle11265-a1co-300h.png')}}" alt="" class="event-1">
+                                            </a>
+                                        </div>
+                                        <div class="event-information">
+                                            <h3 class="event-name ">Sự kiện {{$count++}}</h3>
+                                            <span class="event-address ">Đầm sen park</span><br/>
+                                            <i class="fa fa-calendar"></i>
+                                            <span class="event-date ">30/05/2021-1/6/2021</span>
+                                            <div class="event-price ">25000 VNĐ</div>
+                                            <div class="detail">
+                                                <a href="/eventDetail" >Xem chi tiết</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
-                                <div class="block">
-                                    <div class="event-img image-resize view view-third ">
-                                        <a href=" ">
-                                            <img src="{{asset('assets/clients/img/rectangle11265-a1co-300h.png')}}" alt="" class="event-2">
-                                        </a>
-                                    </div>
-                                    <div class="event-information">
-                                        <h3 class="event-name ">Sự kiện 1</h3>
-                                        <span class="event-address ">Đầm sen park</span><br/>
-                                        <i class="fa fa-calendar"></i>
-                                        <span class="event-date ">30/05/2021-1/6/2021</span>
-                                        <div class="event-price ">25000 VNĐ</div>
-                                        <div class="detail">
-                                            <a href="/eventDetail" >Xem chi tiết</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
-                                <div class="block">
-                                    <div class="event-img image-resize view view-third ">
-                                        <a href=" ">
-                                            <img src="{{asset('assets/clients/img/rectangle11896-zm2r-300h.png')}}" alt="" class="event-3">
-                                        </a>
-                                    </div>
-                                    <div class="event-information">
-                                        <h3 class="event-name ">Sự kiện 1</h3>
-                                        <span class="event-address ">Đầm sen park</span><br/>
-                                        <i class="fa fa-calendar"></i>
-                                        <span class="event-date ">30/05/2021-1/6/2021</span>
-                                        <div class="event-price ">25000 VNĐ</div>
-                                        <div class="detail">
-                                            <a href="/eventDetail" >Xem chi tiết</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
-                                <div class="block">
-                                    <div class="event-img image-resize view view-third ">
-                                        <a href=" ">
-                                            <img src="{{asset('assets/clients/img/rectangle11898-0h8e-300h.png')}}" alt="" class="event-4">
-                                        </a>
-                                    </div>
-                                    <div class="event-information">
-                                        <h3 class="event-name ">Sự kiện 1</h3>
-                                        <span class="event-address ">Đầm sen park</span><br/>
-                                        <i class="fa fa-calendar"></i>
-                                        <span class="event-date ">30/05/2021-1/6/2021</span>
-                                        <div class="event-price ">25000 VNĐ</div>
-                                        <div class="detail">
-                                            <a href="/eventDetail" >Xem chi tiết</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
-                                <div class="block">
-                                    <div class="event-img image-resize view view-third ">
-                                        <a href=" ">
-                                            <img src="{{asset('assets/clients/img/rectangle11896-zm2r-300h.png')}}" alt="" class="event-3">
-                                        </a>
-                                    </div>
-                                    <div class="event-information">
-                                        <h3 class="event-name ">Sự kiện 1</h3>
-                                        <span class="event-address ">Đầm sen park</span><br/>
-                                        <i class="fa fa-calendar"></i>
-                                        <span class="event-date ">30/05/2021-1/6/2021</span>
-                                        <div class="event-price ">25000 VNĐ</div>
-                                        <div class="detail">
-                                            <a href="/eventDetail" >Xem chi tiết</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
-                                <div class="block">
-                                    <div class="event-img image-resize view view-third ">
-                                        <a href=" ">
-                                            <img src="{{asset('assets/clients/img/rectangle11898-0h8e-300h.png')}}" alt="" class="event-4">
-                                        </a>
-                                    </div>
-                                    <div class="event-information">
-                                        <h3 class="event-name ">Sự kiện 1</h3>
-                                        <span class="event-address ">Đầm sen park</span><br/>
-                                        <i class="fa fa-calendar"></i>
-                                        <span class="event-date ">30/05/2021-1/6/2021</span>
-                                        <div class="event-price ">25000 VNĐ</div>
-                                        <div class="detail">
-                                            <a href="/eventDetail" >Xem chi tiết</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
+                        @endif
+                        @if ($length >= 4)
+                        <div class="slide" id="slide">
+                            @foreach ($eventList as $item)
+                                <div class="col-md-3 col-sm-6 sol-xs-6 pro-loop">
+                                    <div class="block">
+                                        <div class="event-img image-resize view view-third ">
+                                            <a href=" ">
+                                                <img src="{{asset('assets/clients/img/rectangle11265-a1co-300h.png')}}" alt="" class="event-1">
+                                            </a>
+                                        </div>
+                                        <div class="event-information">
+                                            <h3 class="event-name ">Sự kiện {{$count++}}</h3>
+                                            <span class="event-address ">Đầm sen park</span><br/>
+                                            <i class="fa fa-calendar"></i>
+                                            <span class="event-date ">{{$item->start_at}} >> {{$item->end_at}}</span>
+                                            <div class="event-price ">{{$item->money}} VNĐ</div>
+                                            <div class="detail">
+                                                <a href="/event/{{$item->eventId}}" >Xem chi tiết</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        @endif
                         <button class="arrow left-arrow" id="left-arrow">
                           <i class="fa fa-chevron-left"></i>
                         </button>

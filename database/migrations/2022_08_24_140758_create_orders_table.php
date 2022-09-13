@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('customerId')->references('customerId')->on('customers');
             $table->unsignedInteger('ticketTypeId');
             $table->foreign('ticketTypeId')->references('ticketTypeId')->on('ticket_types');
-            $table->bigInteger('totalMoney');
+            $table->integer('totalMoney');
             $table->integer('quantity');
             $table->string('cardNumber');
             $table->string('cardName');

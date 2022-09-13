@@ -10,11 +10,9 @@ class EventController extends Controller
 {
     public function showEvent(Request $rq){
         $event = new event();
-        $eventList = $event->getAllOrders();
+        $eventList = $event->getAllEvents();
         $length = count($eventList);
         $count = 1;
-
-        // dd($length);
 
         return view('clients.event', compact('eventList', 'length', 'count'));
     }
@@ -22,7 +20,13 @@ class EventController extends Controller
     public function showEventDetail($eventId=null){
         $event = new event();
         $eventD = $event->getEventDetails($eventId);
+        if(strlen($eventD->eventDetail) < 500){
+            $column = 2;
+        }
+        if(strlen($eventD->eventDetail) > 500){
+            $column = 3;
+        }
 
-        return view('clients.eventDetail', compact('eventD'));
+        return view('clients.eventDetail', compact('eventD', 'column'));
     }
 }

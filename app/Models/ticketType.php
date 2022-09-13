@@ -28,10 +28,9 @@ class ticketType extends Model
 
         foreach($ticketTypeList as $item){
             if($name == $item->ticketTypeName){
-                $ticketTypeId = $item->ticketTypeId;
+                return $item->ticketTypeId;
             }
         }
-        return $ticketTypeId;
     }
 
     public function getTicketTypes($id){

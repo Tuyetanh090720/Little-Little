@@ -58,8 +58,12 @@
                             <input type="text" name="cardName" class="form-control" id="cardName" value="{{$order->cardName}}" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="expiration">Ngày hết hạn</label>
-                            <input type="text" name="expiration" class="form-control" id="expiration" value="{{$order->expiration}}" readonly>
+                            <label for="cardExpiryMonth">Tháng hết hạn</label>
+                            <input type="text" name="cardExpiryMonth" class="form-control" id="cardExpiryMonth" value="{{$order->cardExpiryMonth}}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardExpiryYear">Năm hết hạn</label>
+                            <input type="text" name="cardExpiryYear" class="form-control" id="cardExpiryYear" value="{{$order->cardExpiryYear}}" readonly>
                         </div>
                         <div class="form-group">
                             <label for="paymentStatus">Trạng thái vé</label>

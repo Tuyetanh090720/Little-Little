@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\clients;
-
+use vendor\autoload;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,6 +15,9 @@ use Carbon\Carbon;
 use PDF;
 use Mail;
 use App\Mail\SendMail;
+use Session;
+use Stripe\Stripe;
+use Stripe\Charge;
 
 class PaymentController extends Controller
 {
@@ -58,39 +61,11 @@ class PaymentController extends Controller
         return view('clients.payment', compact('package', 'quantity', 'money', 'date', 'fullname', 'phone', 'email'));
     }
 
-    // $rq -> validate(
-    //     [
-    //         'quantity' => 'required|integer|min:1',
-    //         'date' => 'required|after:tomorrow',
-    //         'customerName' => 'required|min:6|max:50',
-    //         'customerPhone' => 'required|numeric',
-    //         'customerEmail' => 'required|email',
-    //         'cardNumber' => 'required|numeric|digits:12|digits:19',
-    //         'cardName' => 'required|min:4|max:50',
-    //         'date' => 'required',
-    //         'CVC' => 'required|digits:4',
-    //     ],
-    //     [
-    //         'required' => 'Vui lòng nhập dữ liệu',
-    //         'quantity.min' => 'Số lượng lớn hơn 0',
-    //         'customerName.min' => 'Tên phải dài hơn 4 ký tự',
-    //         'customerName.max' => 'Tên phải ngắn hơn 50 ký tự',
-    //         'cardName.min' => 'Tên phải dài hơn 4 ký tự',
-    //         'cardName.max' => 'Tên phải ngắn hơn 50 ký tự',
-    //         'cardNumber.digits' => 'Số tài khoản phải 12 hoặc 19 ký tự',
-    //         'CVC.digits' => 'CVC phải 4 ký tự',
-    //         'after' => 'Phải nhập sau ngày hôm nay',
-    //         'numeric' => 'Phải nhập số',
-    //         'email' => 'Phải nhập email',
-    //     ]
-    // );
-
     public function payment(Request $rq){
         $customer = new customer();
         $order = new order();
         $orderDetail = new orderDetail();
         $ticketType = new ticketType();
-
 
         $package = $rq->package;
         $quantity = $rq->quantity;
@@ -107,13 +82,21 @@ class PaymentController extends Controller
         $ticketTypeId = $ticketType->getTicketTypeID($package);
         $arrayCT = ['customerId'=>$customerId, 'ticketTypeId'=>$ticketTypeId];
 
-        // thêm order và lấy id order đó
-        $a = explode('/',$rq->expiration);
-        $dt = Carbon::create($a[2], $a[1], $a[0], 0);
-        $expiration = $dt->toDateString();
+        //stripe
+        $totalMoney = $rq->totalMoney;
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+        $charge = Charge::create ([
+                "amount" =>  $totalMoney*100,
+                "currency" => "usd",
+                "source" => $rq->stripeToken,
+                "description" => "Test payment from itsolutionstuff.com."
+        ]);
+        Session::flash('success', 'Payment successful!');
 
-        $arrayO = ['expiration' => $expiration, 'CVC' => $rq->CVC, 'paymentStatus' => "Chưa thanh toán"];
-        $orderData = array_merge($arrayCT, $rq->only('totalMoney', 'quantity', 'cardNumber', 'cardName'), $arrayO, $arrdate);
+
+        // thêm order và lấy id order đó
+        $arrayO = ['paymentStatus' => "Chưa thanh toán"];
+        $orderData = array_merge($arrayCT, $rq->only('totalMoney', 'quantity', 'cardNumber', 'cardName', 'cardExpiryMonth', 'cardExpiryYear', 'cardCVC'), $arrayO, $arrdate);
         $orderId =  $order->insertGetId($orderData);
 
         // thêm orderDetail
@@ -131,7 +114,7 @@ class PaymentController extends Controller
             $orderDetailList = $orderDetail->getOrderDetails($orderId);
         }
 
-        return view('clients.paymentSuccess', compact('orderDetailList', 'quantity', 'orderId', 'customerEmail'));
+        return view('clients.paymentSuccess', compact('orderDetailList', 'quantity', 'orderId', 'customerEmail',));
     }
 
     public function download($flag=null, $quantity=null, $orderId=null, $customerEmail=null){

@@ -5,7 +5,7 @@
         <span>Thanh toán</span>
     </div>
     <div class="content-item">
-        <form class="row" name="payment" action="/paymentSuccess" method="POST">
+        <form class="row require-validation" name="payment" action="/paymentSuccess" method="POST" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}">
             @csrf
             <div class="background-block col-lg-8 col-md-8">
                 <div class="border-block">
@@ -26,38 +26,23 @@
                             <label for="quantity">Số lượng vé</label><br/>
                             <input type="number" class="quantity" name="quantity" id="quantity" value="{{$quantity}}" min='1' onchange="ChangeQuantity(event)" required />
                             <span>Vé</span>
-                            @error('quantity')
-                                <span class="error"> *{{$message}}</span>
-                            @enderror
                         </div>
                         <div class="form-group col-lg-4 col-md-4">
                             <label for="date">Ngày sử dụng</label><br/>
                             <input type="datetime" class="validate" name="validate" id="date" value="{{$date}}" required/>
                             <a id="btn-calendar"><i class="fa fa-calendar"></i></a>
-                            @error('date')
-                                <span class="error"> *{{$message}}</span>
-                            @enderror
                         </div>
                         <div class="form-group col-lg-12 col-md-12">
                             <label for="customerName">Thông tin liên hệ</label><br/>
                             <input type="text" class="customerName" id="payname" name="customerName" value="{{$fullname}}" required/>
-                            @error('customerName')
-                                <span class="error"> *{{$message}}</span>
-                            @enderror
                         </div>
                         <div class="form-group col-lg-12 col-md-12">
                             <label for="customerPhone">Điện thoại</label><br/>
                             <input type="text" class="customerPhone" name="customerPhone" value="{{$phone}}" required/>
-                            @error('customerPhone')
-                                <span class="error"> *{{$message}}</span>
-                            @enderror
                         </div>
                         <div class="form-group col-lg-12 col-md-12">
                             <label for="customerEmail">Email</label><br/>
                             <input type="email" class="customerEmail" name="customerEmail" value="{{$email}}" required/>
-                            @error('customerEmail')
-                                <span class="error"> *{{$message}}</span>
-                            @enderror
                         </div>
                     </div>
                 </div>
@@ -70,33 +55,30 @@
                         </div>
                     </div>
                     <div class="payment-information">
-                        <div class="form-group">
+                        <div class="form-group required">
                             <label for="card-number">Số thẻ</label><br/>
-                            <input type="text" class="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required/>
-                            @error('cardNumber')
-                                <span class="error"> *{{$message}}</span>
-                            @enderror
+                            <input type="text" class="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456"  size='20' required/>
                         </div>
                         <div class="form-group">
                             <label for="namecard">Họ tên chủ thẻ</label><br/>
                             <input type="text" class="cardName" name="cardName" placeholder="NGUYEN VAN A" required/>
-                            @error('cardName')
-                                <span class="error"> *{{$message}}</span>
-                            @enderror
                         </div>
-                        <div class="form-group">
-                            <label for="expiry-date">Ngày hết hạn</label><br/>
-                            <input type="text" class="expiration" name="expiration" placeholder="02/05/2025" required/>
-                            @error('expiration')
-                                <span class="error"> *{{$message}}</span>
-                            @enderror
+                        <div class="form-group expiration required">
+                            <label for="expiry-date">Tháng hết hạn</label><br/>
+                            <input type="text" class="cardExpiryMonth" name="cardExpiryMonth" placeholder="MM" required/>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group expiration required">
+                            <label for="expiry-date">Năm hết hạn</label><br/>
+                            <input type="text" class='cardExpiryYear' name="cardExpiryYear" placeholder='YYYY' size='4' required/>
+                        </div>
+                        <div class="form-group cvc required">
                             <label for="CVC">CVV/CVC</label><br/>
-                            <input type="password" class="CVC" name="CVC" placeholder="***" required/>
-                            @error('CVC')
-                                <span class="error"> *{{$message}}</span>
-                            @enderror
+                            <input type="password" class="cardCVC" name="cardCVC" placeholder="****" size="4" required/>
+                        </div>
+                        <div class='form-row row'>
+                            <div class='col-md-12 error form-group hide'>
+                                <div class='alert-danger alert'></div>
+                            </div>
                         </div>
                         <button type="submit" class="payment">Thanh toán</button>
                     </div>
@@ -104,13 +86,84 @@
             </div>
         </form>
     </div>
+    <div class="alert alert-error alert-payment hide">
+        <div class="head-color">
+            <button type="button" class="close" id="close" data-dismiss="modal">&times;</button>
+            <img src="{{asset("assets/clients/img/sad emoji 1.png")}}">
+        </div>
+        <div class="alert-content">
+            <span>Hình như đã có lỗi xảy ra khi thanh toán...
+            <br/>Vui lòng kiểm tra lại thông tin liên hệ, thông tin thẻ và thử lại.</span>
+        </div>
+    </div>
     <div class="decord-item">
         <img src="{{asset('assets/clients/img/Trini_Arnold_Votay1 2.png')}}" alt="" class="payment-image">
     </div>
     @include('clients.calendar')
 </div>
+<script src="{{asset('assets/clients/js/alert.js')}}"></script>
 <script src="{{asset('assets/clients/js/calendar.js')}}"></script>
 <script src="{{asset('assets/clients/js/money.js')}}"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() {
 
+        var $form = $(".require-validation");
 
+        $('form.require-validation').bind('submit', function(e) {
+            var $form = $(".require-validation"),
+            inputSelector = ['input[type=email]', 'input[type=password]',
+                             'input[type=text]', 'input[type=file]',
+                             'textarea'].join(', '),
+            $inputs       = $form.find('.required').find(inputSelector),
+            $errorMessage = $form.find('div.error'),
+            valid         = true;
+            $errorMessage.addClass('hide');
+
+            $('.has-error').removeClass('has-error');
+            $inputs.each(function(i, el) {
+              var $input = $(el);
+              if ($input.val() === '') {
+                $input.parent().addClass('has-error');
+                $errorMessage.removeClass('hide');
+                e.preventDefault();
+              }
+            });
+
+            if (!$form.data('cc-on-file')) {
+              e.preventDefault();
+              Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+              Stripe.createToken({
+                number: $('.cardNumber').val(),
+                cvc: $('.cardCVC').val(),
+                exp_month: $('.cardExpiryMonth').val(),
+                exp_year: $('.cardExpiryYear').val()
+              }, stripeResponseHandler);
+            }
+
+      });
+
+      function stripeResponseHandler(status, response) {
+            if (response.error) {
+                $('.error')
+                .removeClass('hide')
+                .find('.alert')
+                .text(response.error.message);
+
+                $('.alert-error')
+                .removeClass('hide')
+            } else {
+                /* token contains id, last4, and card type */
+                var token = response['id'];
+
+                console.log(token);
+                $form.find('input[type=text]').empty();
+                $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+                $form.get(0).submit();
+            }
+        }
+    });
+    </script>
 @endsection

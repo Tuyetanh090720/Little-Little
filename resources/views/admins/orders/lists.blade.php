@@ -29,7 +29,8 @@
                                 <th>validate</th>
                                 <th>cardNumber</th>
                                 <th>cardName</th>
-                                <th>expiration</th>
+                                <th>cardExpiryMonth</th>
+                                <th>cardExpiryYear</th>
                                 <th>paymentStatus</th>
                                 <th>created_at</th>
                                 <th>updated_at</th>
@@ -57,7 +58,8 @@
                                     @endforeach
                                     <td>{{$item->cardNumber}}</td>
                                     <td>{{$item->cardName}}</td>
-                                    <td>{{$item->expiration}}</td>
+                                    <td>{{$item->cardExpiryMonth}}</td>
+                                    <td>{{$item->cardExpiryYear}}</td>
                                     <td>{{$item->paymentStatus}}</td>
                                     <td>{{$item->created_at}}</td>
                                     <td>{{$item->updated_at}}</td>

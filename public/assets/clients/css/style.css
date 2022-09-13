@@ -1381,7 +1381,6 @@ textarea {
 }
 
 .event-p {
-    column-count: 3;
     text-align: justify;
     column-gap: 30px;
     column-span: 3;
@@ -1456,20 +1455,46 @@ textarea {
     z-index: 11;
 }
 
-.alert {
+.hide {
+    display: none;
+}
+
+.alert-error {
     width: 30%;
     background-color: #fff;
     color: #0f0f0f;
     border-radius: 20px;
     position: fixed;
     z-index: 1000000;
-    top: 0;
-    left: 30%;
+    top: 20%;
+    left: 40%;
     border: 1px solid #ffa90b;
+}
+
+.alert-contact {
+    padding: 10px 20px;
 }
 
 .alert-content {
     padding: 20px 20px;
+}
+
+.alert-payment {
+    width: 22%;
+}
+
+.alert-payment img {
+    width: 30%;
+    margin-top: -15%;
+    margin-left: 35%;
+}
+
+.alert-payment .head-color {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #FF8B15;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .close:focus {

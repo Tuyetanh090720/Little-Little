@@ -23,7 +23,7 @@ class ContactController extends Controller
 
         $contact->addContacts($contactrData);
 
-        $alert = '<div class="alert">
+        $alert = '<div class="alert alert-contact alert-error">
                     <button type="button" class="close" id="close" data-dismiss="modal">&times;</button>
                     <div class="alert-content">
                         <span>Gửi liên hệ thành công. <br/>Vui lòng kiên nhẫn đợi phản hồi từ chúng tôi, bạn nhé!</span>

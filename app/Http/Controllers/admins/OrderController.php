@@ -53,7 +53,7 @@ class OrderController extends Controller
         $update_at = ['updated_at' => date('Y-m-d')];
 
         // gán dữ liệu gửi lên vào biến data
-        $dataO = array_merge($request->only('customerId', 'ticketTypeId', 'quantity', 'cardNumber', 'cardName', 'expiration', 'CVC', 'paymentStatus',  'created_at'), $update_at);
+        $dataO = array_merge($request->only('customerId', 'ticketTypeId', 'quantity', 'cardNumber', 'cardName', 'cardExpiryMonth', 'cardExpiryYear', 'cardCVC', 'paymentStatus',  'created_at'), $update_at);
 
         $dataC = array_merge($request->only('customerName', 'customerPhone', 'customerEmail', 'created_at'), $update_at);
 

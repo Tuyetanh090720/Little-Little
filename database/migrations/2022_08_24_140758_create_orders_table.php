@@ -23,8 +23,9 @@ class CreateOrdersTable extends Migration
             $table->integer('quantity');
             $table->string('cardNumber');
             $table->string('cardName');
-            $table->date('expiration');
-            $table->string('CVC');
+            $table->integer('cardExpiryMonth');
+            $table->integer('cardExpiryYear');
+            $table->integer('cardCVC');
             $table->string('paymentStatus');
             $table->date('created_at');
             $table->date('updated_at');

@@ -14,9 +14,9 @@
                     <span class="event-address ">Đầm sen park</span>
                     <div class="event-price ">{{$eventD->money}} VNĐ</div>
                 </div>
-                <div class="col-lg-8 col-md-8 event-p">
+                <div class="col-lg-8 col-md-8 event-p" style="column-count: {{$column}};">
                     <p>{{$eventD->eventDetail}}</p>
-                    <img src="{{asset('assets/clients/img/rectangle11898-0h8e-300h.png')}}" alt="" class="detail-img">
+                    <img width="100" src="{!! asset("storage/img/$eventD->eventId.jpg") !!}">
                 </div>
             </div>
         </div>

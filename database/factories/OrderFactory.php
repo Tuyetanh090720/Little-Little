@@ -14,8 +14,8 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'customerId' => $this->faker->numberBetween($min = 1, $max = 5),
-            'ticketTypeId' => $this->faker->numberBetween($min = 1, $max = 5),
+            'customerId' => $this->faker->numberBetween($min = 1, $max = 3),
+            'ticketTypeId' => $this->faker->numberBetween($min = 1, $max = 3),
             'totalMoney' => $this->faker->randomNumber(),
             'quantity' => $this->faker->randomDigit(),
             'cardNumber' => $this->faker->phoneNumber(),

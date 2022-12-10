@@ -95,7 +95,7 @@ class PaymentController extends Controller
 
 
         // thêm order và lấy id order đó
-        $arrayO = ['paymentStatus' => "Chưa thanh toán"];
+        $arrayO = ['paymentStatus' => "Đã thanh toán"];
         $orderData = array_merge($arrayCT, $rq->only('totalMoney', 'quantity', 'cardNumber', 'cardName', 'cardExpiryMonth', 'cardExpiryYear', 'cardCVC'), $arrayO, $arrdate);
         $orderId =  $order->insertGetId($orderData);
 

@@ -14,7 +14,7 @@ class OrderDetailFactory extends Factory
     public function definition()
     {
         return [
-            'orderId' => $this->faker->numberBetween($min = 1, $max = 5),
+            'orderId' => $this->faker->numberBetween($min = 1, $max = 3),
             'validate' => $this->faker->dateTime(),
             'ticketStatus' => $this->faker->sentence(3, true),
             'created_at' => $this->faker->dateTime(),

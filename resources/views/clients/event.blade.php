@@ -16,7 +16,7 @@
                                         <div class="block">
                                             <div class="event-img image-resize view view-third ">
                                                 <a href=" ">
-                                                    <img src="{!! asset("storage/img/$item->eventId.jpg") !!}" alt="" class="event-1">
+                                                    <img src="{!! asset("storage/img/$item->eventId.png") !!}" alt="" class="event-1">
                                                 </a>
                                             </div>
                                             <div class="event-information">
